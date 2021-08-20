@@ -77,7 +77,7 @@ public class StateSetIndex {
 	}
 
 	/**
-	 * Finds strings matching the given string in this index.
+	 * Find the nearest string in this index.
 	 *
 	 * @param string string to find
 	 * @param threshold maximum acceptable edit distance
@@ -143,7 +143,7 @@ public class StateSetIndex {
 	private Optional<String> getBestCandidate(String string, Set<String> candidates, int threshold) {
 
 		String bestCandidate = null;
-		int bestDistance = MAX_VALUE;
+		int bestDistance = -1;
 
 		var levenshtein = new LevenshteinDistance(threshold);
 
@@ -151,7 +151,7 @@ public class StateSetIndex {
 
 			var distance = levenshtein.apply(candidate, string);
 
-			if (distance != -1 && distance < bestDistance) {
+			if (distance != -1 && (bestCandidate == null || distance < bestDistance)) {
 
 				bestCandidate = candidate;
 				bestDistance = distance;

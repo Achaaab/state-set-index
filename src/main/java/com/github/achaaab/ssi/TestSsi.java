@@ -13,11 +13,8 @@ import java.util.Set;
 public class TestSsi {
 
 	private static final int THRESHOLD = 2;
-
 	private static final int INDEX_SIZE = 6;
-
 	private static final Set<String> STRINGS = Set.of("Müller", "Mueller", "Muentner", "Muster", "Mustermann");
-
 	private static final String STRING_TO_MATCH = "Mustre";
 
 	private static final Map<Character, Character> ALPHABET_MAPPING;
@@ -40,6 +37,8 @@ public class TestSsi {
 	}
 
 	/**
+	 * Runs a simple test based on the research paper example.
+	 * 
 	 * @param arguments none
 	 * @since 0.0.0
 	 */
@@ -51,6 +50,7 @@ public class TestSsi {
 				INDEX_SIZE
 		);
 
-		System.out.println(stateSetIndex.find(STRING_TO_MATCH, THRESHOLD));
+		var match = stateSetIndex.find(STRING_TO_MATCH, THRESHOLD);
+		System.out.println(match);
 	}
 }
